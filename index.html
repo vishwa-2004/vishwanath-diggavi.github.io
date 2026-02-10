@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwanath Diggavi | Mechanical Design Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b35;
+            --secondary: #f7931e;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #16213e;
+            --blue: #0f3460;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, transparent 45%, rgba(255,107,53,0.03) 50%, transparent 55%),
+                linear-gradient(150deg, transparent 45%, rgba(247,147,30,0.03) 50%, transparent 55%);
+            background-size: 100px 100px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .gear {
+            position: absolute;
+            border: 3px solid rgba(255,107,53,0.1);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .gear:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+        }
+
+        .gear:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 15%;
+            animation-direction: reverse;
+            animation-duration: 15s;
+        }
+
+        .gear:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 20%;
+            animation-duration: 10s;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            animation: fadeInLeft 1s ease 0.2s both;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            animation: fadeInLeft 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInLeft 1s ease 0.6s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-visual {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(247,147,30,0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-visual::before {
+            content: '⚙️';
+            position: absolute;
+            font-size: 250px;
+            opacity: 0.1;
+            animation: rotateGear 10s linear infinite;
+        }
+
+        @keyframes rotateGear {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .about-image::before {
+            content: '🔧';
+            font-size: 200px;
+            position: absolute;
+            opacity: 0.2;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .about-image .engineering-icon {
+            font-size: 180px;
+            z-index: 1;
+        }
+
+        .about-text {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-box .number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-box .label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: var(--dark);
+            color: white;
+        }
+
+        #skills .section-title {
+            color: white;
+        }
+
+        #skills .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,107,53,0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:nth-child(1) .project-image {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: moveBackground 15s linear infinite;
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Design Tools Section */
+        #tools {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #tools .section-title,
+        #tools .section-subtitle {
+            color: white;
+        }
+
+        .tools-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .tool-box:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .tool-box .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-box p {
+            opacity: 0.9;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: var(--light);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 45%;
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content .date {
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background: var(--primary);
+            border: 5px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--secondary);
+            z-index: 2;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, background 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            font-family: inherit;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 3rem;
+            }
+
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .tools-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">⚙️ VD</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="gear"></div>
+        <div class="gear"></div>
+        <div class="gear"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hello, I'm <span class="highlight">Vishwanath Diggavi</span></h1>
+                <p class="subtitle">Mechanical Design Engineer | CAD Expert | Robotics Innovator</p>
+                <p>Transforming ideas into engineered reality through precision design, mechanical innovation, and cutting-edge automation solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="https://www.linkedin.com/in/vishwanath-diggavi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn Profile</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-visual">
+                    <div class="floating">🔧</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Engineering Student with a Passion for Mechanical Design</p>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="engineering-icon">⚙️</div>
+                </div>
+                <div class="about-text">
+                    <h3>Mechanical Engineering Enthusiast</h3>
+                    <p>I'm a dedicated Mechanical Engineering undergraduate at Basaveshwar Engineering College, specializing in CAD design, mechanical systems, and robotics automation.</p>
+                    <p>My journey in engineering is driven by a passion for creating innovative mechanical solutions that solve real-world problems. From designing complex assemblies in Fusion 360 to developing autonomous robotic systems, I thrive on challenges that push the boundaries of mechanical innovation.</p>
+                    <p>As the Membership Development Committee Chair at IEEE Student Branch, I lead technical initiatives while mentoring fellow students in engineering principles and professional development.</p>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="number">5+</div>
+                    <div class="label">Projects Completed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">2</div>
+                    <div class="label">Hackathons</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">100%</div>
+                    <div class="label">Dedication</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Core Competencies</h2>
+            <p class="section-subtitle">Technical Skills & Engineering Expertise</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Mechanical Design & CAD</h3>
+                    <ul class="skill-list">
+                        <li>3D Modeling & Parametric Design</li>
+                        <li>Assembly Design & Integration</li>
+                        <li>Engineering Drawings & Documentation</li>
+                        <li>Component Optimization</li>
+                        <li>Design for Manufacturing (DFM)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🤖</div>
+                    <h3>Robotics & Automation</h3>
+                    <ul class
+<div class="skill-card">
+                <div class="skill-icon">⚡</div>
+                <h3>Engineering Analysis</h3>
+                <ul class="skill-list">
+                    <li>Mechanical System Design</li>
+                    <li>Material Selection</li>
+                    <li>Problem Solving & Innovation</li>
+                    <li>Prototype Development</li>
+                    <li>Technical Documentation</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">👥</div>
+                <h3>Leadership & Collaboration</h3>
+                <ul class="skill-list">
+                    <li>Team Leadership (IEEE)</li>
+                    <li>Project Management</li>
+                    <li>Student Mentoring</li>
+                    <li>Technical Presentations</li>
+                    <li>Cross-functional Teamwork</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Engineering Solutions That Make a Difference</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="floating">🤖</div>
+                </div>
+                <div class="project-content">
+                    <h3>Human Following Robot with Load Carrier</h3>
+                    <p>Engineered an autonomous mobile robot capable of tracking and following human targets while transporting loads. Designed complete mechanical assemblies, integrated sensor systems, and optimized for stable motion control and payload handling.</p>
+                    <div class="project-tags">
+                        <span class="tag">Robotics</span>
+                        <span class="tag">CAD Design</span>
+                        <span class="tag">Sensors</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Mechanical Systems</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="floating">🎓</div>
+                </div>
+                <div class="project-content">
+                    <h3>Edu Vitality - AI in Education</h3>
+                    <p>Participated in RV College of Engineering hackathon, developing innovative AI-powered educational concepts. Collaborated with multidisciplinary teams to create solutions for enhancing learning effectiveness and student engagement.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI Integration</span>
+                        <span class="tag">Innovation</span>
+                        <span class="tag">Education Tech</span>
+                        <span class="tag">Team Collaboration</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="floating">💡</div>
+                </div>
+                <div class="project-content">
+                    <h3>Code Vault - AI Tutor System</h3>
+                    <p>Conceptualized an intelligent tutoring system at MIT Mysore hackathon. Developed system architecture for personalized learning support, demonstrating rapid prototyping and innovative problem-solving capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">System Design</span>
+                        <span class="tag">AI Concepts</span>
+                        <span class="tag">Rapid Prototyping</span>
+                        <span class="tag">Hackathon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Design Tools Section -->
+<section id="tools">
+    <div class="container">
+        <h2 class="section-title">Design Tools & Software</h2>
+        <p class="section-subtitle">Professional Engineering Software Proficiency</p>
+        <div class="tools-showcase">
+            <div class="tool-box">
+                <div class="icon">🔧</div>
+                <h3>Autodesk Fusion 360</h3>
+                <p>3D CAD/CAM Design & Modeling</p>
+            </div>
+            <div class="tool-box">
+                <div class="icon">📐</div>
+                <h3>Engineering Drawing</h3>
+                <p>Technical Documentation</p>
+            </div>
+            <div class="tool-box">
+                <div class="icon">⚙️</div>
+                <h3>Assembly Design</h3>
+                <p>Complex Mechanical Systems</p>
+            </div>
+            <div class="tool-box">
+                <div class="icon">💻</div>
+                <h3>HTML & Web</h3>
+                <p>Basic Programming Skills</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Experience & Leadership</h2>
+        <p class="section-subtitle">Building Tomorrow's Engineers Today</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>🏆 Membership Development Committee Chair</h3>
+                    <div class="date">IEEE Student Branch | Current</div>
+                    <p>Leading student engagement initiatives, coordinating technical workshops, and mentoring junior engineering students. Driving membership growth and fostering a culture of innovation and technical excellence.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>🎯 IEEE Volunteer</h3>
+                    <div class="date">September 2024 - Present</div>
+                    <p>Actively supporting technical events, collaborative learning initiatives, and community building within the IEEE Student Branch. Contributing to workshops on emerging technologies and engineering practices.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>💡 Hackathon Innovator</h3>
+                    <div class="date">Multiple Events | 2024</div>
+                    <p>Participated in competitive hackathons at RV College of Engineering and MIT Mysore, developing AI-driven solutions for education. Demonstrated rapid problem-solving and innovative thinking under pressure.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Open to Internships, Collaborations & Opportunities</p>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <a href="mailto:diggavivishwanathd@gmail.com" class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>diggavivishwanathd@gmail.com</p>
+                    </div>
+                </a>
+                <a href="tel:+919686937392" class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+91 9686937392</p>
+                    </div>
+                </a>
+                <div class="contact-item" style="cursor: default;">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Bagalkot, Karnataka, India</p>
+                    </div>
+                </div>
+                <a href="https://www.linkedin.com/in/vishwanath-diggavi" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <div class="contact-icon">🔗</div>
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <p>Connect with me professionally</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message 🚀</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="mailto:diggavivishwanathd@gmail.com">📧 Email</a>
+        <a href="https://www.linkedin.com/in/vishwanath-diggavi" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+        <a href="tel:+919686937392">📱 Phone</a>
+    </div>
+    <p>&copy; 2024 Vishwanath Diggavi | Mechanical Design Engineer</p>
+    <p style="margin-top: 0.5rem; opacity: 0.7;">Engineered with precision & passion ⚙️</p>
+</footer>
+
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Form submission
+    function handleSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        alert(`Thank you ${name}! This is a demo form. In a live website, your message would be sent to Vishwanath.`);
+        e.target.reset();
+    }
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.background = 'rgba(26, 26, 46, 1)';
+        } else {
+            nav.style.background = 'rgba(26, 26, 46, 0.95)';
+        }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements
+    document.querySelectorAll('.project-card, .skill-card, .tool-box, .stat-box').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html></parameter>
